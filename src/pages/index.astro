@@ -1,16 +1,135 @@
+﻿---
+const projects = [
+  {
+    title: "High Steaks",
+    desc: "Built the Plinko and coin-toss minigames, tuning physics and probabilities so wins feel fair and readable.",
+    tech: ["Unity", "C#", "VS Code"],
+    link: "https://spielo.itch.io/high-steaks",
+    repo: "",
+    image: "/imgs/high-steaks/PlinkoScreenshot.png",
+    imageAlt: "High Steaks Plinko minigame screenshot",
+  },
+  {
+    title: "Pinball Roguelike (in development)",
+    desc: "Prototyping a pinball-inspired roguelike with progression and enemy waves, focusing on flipper feel and bounce consistency.",
+    tech: ["Unity", "C#", "VS Code/JetBrains Rider"],
+    link: "",
+    repo: "https://github.com/Atman2212/Pinball",
+  },
+];
+const contact = {
+  email: "wyatt.bier@gmail.com",
+  github: "https://github.com/Atman2212",
+  linkedin: "https://www.linkedin.com/in/wyatt-bier",
+};
 ---
-
----
-
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Wyatt Bier | Portfolio</title>
+  <style>
+    body { margin:0; font-family: sans-serif; background:#0b0f19; color:#e5e7eb; line-height:1.6; }
+    .page { max-width:1100px; margin:0 auto; padding:32px 20px 64px; }
+    header { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:28px; }
+    nav { display:flex; gap:12px; }
+    nav a { color:#94a3b8; text-decoration:none; padding:8px 12px; border-radius:10px; }
+    nav a:hover { background:rgba(255,255,255,0.08); color:#e5e7eb; }
+    section { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); border-radius:14px; padding:20px; margin-bottom:16px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px; }
+    .card { border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:14px; background:rgba(255,255,255,0.02); }
+    .chips { display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; }
+    .chip { padding:4px 8px; border-radius:999px; background:rgba(255,255,255,0.1); font-size:0.9rem; }
+    .buttons { display:flex; gap:8px; margin-top:10px; }
+    .btn { padding:8px 12px; border-radius:10px; border:1px solid rgba(255,255,255,0.2); text-decoration:none; color:#e5e7eb; font-weight:600; }
+    .btn.primary { border-color:#f59e0b; background:linear-gradient(120deg,#f59e0b,#fbbf24); color:#0b0f19; }
+    .thumb { width:100%; display:block; border-radius:10px; margin-bottom:10px; border:1px solid rgba(255,255,255,0.05); object-fit:cover; }
+    footer { text-align:center; color:#94a3b8; margin-top:24px; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div><strong>Wyatt Bier</strong></div>
+      <nav>
+        <a href="#hero">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="hero">
+        <p>Unity Gameplay Programmer · Physics & Gamefeel</p>
+        <h1>I prototype and polish playful, physics-driven gameplay in Unity.</h1>
+        <p>I design minigames end-to-end—tight input, tuned randomness, and readable feedback—so players feel the outcome is fair and fun.</p>
+        <div class="buttons">
+          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn" href="#contact">Contact</a>
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2>Projects</h2>
+        <div class="grid">
+          {projects.map((p) => (
+            <div class="card">
+              {p.image && <img class="thumb" src={p.image} alt={(p.imageAlt || p.title)} />}
+              <h3>{p.title}</h3>
+              <p>{p.desc}</p>
+              {p.tech.length > 0 && (
+                <div class="chips">
+                  {p.tech.map((t) => <span class="chip">{t}</span>)}
+                </div>
+              )}
+              <div class="buttons">
+                {p.link && <a class="btn primary" href={p.link} target="_blank">Demo</a>}
+                {p.repo && <a class="btn" href={p.repo} target="_blank">Source Code</a>}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="about">
+        <h2>About</h2>
+        <p>My name is Wyatt Bier. I’m a 21-year-old Unity gameplay programmer graduating with a B.S. in Computer Science from the University of Dayton in May 2026. I love building game logic and tuning physics-driven systems so they feel fair, responsive, and fun.</p>
+      </section>
+
+      <section id="skills">
+        <h2>Skills</h2>
+        <div class="chips">
+          <span class="chip">Unity</span>
+          <span class="chip">C#</span>
+          <span class="chip">Gameplay Prototyping</span>
+          <span class="chip">Physics Tuning</span>
+          <span class="chip">Gamefeel</span>
+          <span class="chip">VS Code</span>
+          <span class="chip">JetBrains Rider</span>
+          <span class="chip">Git</span>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: wyatt.bier@gmail.com</p>
+        <div class="buttons">
+          <a class="btn" href={contact.github} target="_blank">GitHub</a>
+          <a class="btn" href={contact.linkedin} target="_blank">LinkedIn</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>© {new Date().getFullYear()} Wyatt Bier</footer>
+  </div>
+</body>
 </html>
+
+
+
+
+
+
